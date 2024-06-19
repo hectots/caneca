@@ -1,0 +1,24 @@
+<div class="navbar bg-base-100">
+    <div class="flex-1">
+        <a href="{{ url_for('homepage') }}" class="btn btn-ghost text-xl">App Name</a>
+    </div>
+    <div class="flex-none">
+        {% if user %}
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="{{ url_for('view_members_only') }}">Members Only</a></li>
+        </ul>
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Avatar" src="{{user.picture}}" />
+                </div>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-ghost text-xl">Login</a>
+        {% endif %}
+    </div>
+</div>
